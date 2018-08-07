@@ -62,12 +62,34 @@
       background:black;
       position: absolute;
       top:50%;
+      transform-origin: 100%;
+      transform: rotate(90deg);
+      transition: all 0.5s;
     }
 
   </style>
-
   <script>
+  const secondHand = document.querySelector('.second-hand')
+  const minHand = document.querySelector('.min-hand')
+  const hourHand = document.querySelector('.hour-hand')
 
+  function setDate() {
+      const now = new Date()
+      const seconds = now.getSeconds()
+      const minutes = now.getMinutes()
+      const hours = now.getHours()
+      const secDegress = ((seconds / 60) * 360) + 90
+      const minDegress = ((minutes / 60) * 360) + 90
+      const hourDegress = ((hours / 60) * 360) + 90
+      secondHand.style.transform = `rotate(${secDegress}deg)`
+      minHand.style.transform = `rotate(${minDegress}deg)`
+      hourHand.style.transform = `rotate(${hourDegress}deg)`
+      // secondHand.style.transition = '' resets inline style
+      // by removing it so element can revert back to stylesheet.
+      secDegress === 90 ? secondHand.style.transition = 'none' : secondHand.style.transition = ''
+
+  }
+  setInterval(setDate, 1000)
 
   </script>
 </body>

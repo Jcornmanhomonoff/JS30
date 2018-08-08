@@ -24,24 +24,55 @@
       { first: 'Ada', last: 'Lovelace', year: 1815, passed: 1852 },
       { first: 'Sarah E.', last: 'Goode', year: 1855, passed: 1905 },
       { first: 'Lise', last: 'Meitner', year: 1878, passed: 1968 },
-      { first: 'Hanna', last: 'Hammarström', year: 1829, passed: 1909 }
+      { first: 'Hanna', last: 'Hammarström', year: 1829, passed: 1909 },
+      { first: 'Jess', last: 'Corn', year: 1829, passed: 1908 }
     ];
 
     const people = ['Beck, Glenn', 'Becker, Carl', 'Beckett, Samuel', 'Beddoes, Mick', 'Beecher, Henry', 'Beethoven, Ludwig', 'Begin, Menachem', 'Belloc, Hilaire', 'Bellow, Saul', 'Benchley, Robert', 'Benenson, Peter', 'Ben-Gurion, David', 'Benjamin, Walter', 'Benn, Tony', 'Bennington, Chester', 'Benson, Leana', 'Bent, Silas', 'Bentsen, Lloyd', 'Berger, Ric', 'Bergman, Ingmar', 'Berio, Luciano', 'Berle, Milton', 'Berlin, Irving', 'Berne, Eric', 'Bernhard, Sandra', 'Berra, Yogi', 'Berry, Halle', 'Berry, Wendell', 'Bethea, Erin', 'Bevan, Aneurin', 'Bevel, Ken', 'Biden, Joseph', 'Bierce, Ambrose', 'Biko, Steve', 'Billings, Josh', 'Biondo, Frank', 'Birrell, Augustine', 'Black, Elk', 'Blair, Robert', 'Blair, Tony', 'Blake, William'];
 
     // Array.prototype.filter()
     // 1. Filter the list of inventors for those who were born in the 1500's
+        const fifteen = inventors.filter((inventor) => {
+                            return inventor.year > 1499 && inventor.year < 1600 ? true : false
+                        })
+        console.log(fifteen)
 
     // Array.prototype.map()
     // 2. Give us an array of the inventors' first and last names
+        const names = inventors.map((inventor) => inventor.first + ' ' + inventor.last)
+        console.log(names)
 
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
+        const birthday = inventors.sort((a, b) => {
+            if (a.year > b.year) {
+                return 1
+            } else if (b.year > a.year) {
+                return -1
+            } else {
+                return 0
+            }
+        })
+        console.log(birthday)
 
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live?
+        const years = inventors.reduce((accumulator, inventor) => {
+            return accumulator + (inventor.passed - inventor.year)
+        }, 0)
+        console.log(years)
 
     // 5. Sort the inventors by years lived
+        const youngToOld = inventors.sort((a, b) => {
+            if ((a.passed - a.year) > (b.passed - b.year)) {
+                return 1
+            } else if ((b.passed - b.year) > (a.passed - a.year)) {
+                return -1
+            } else {
+                return 0
+            }
+        })
+         console.log(youngToOld)
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris

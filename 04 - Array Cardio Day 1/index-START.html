@@ -80,7 +80,7 @@
     let deWords = function () {
         // Array.from converts a list of nodes to an array of node elements
         const listItems = Array.from(document.querySelectorAll('.mw-category-group li'))
-        const places = listItems.map( li => li.textContent )
+        const places = listItems.map( li => li.textContent ).filter(li => li.includes(' de '))
         return places
     }
 
@@ -88,6 +88,9 @@
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+    let lastNames = people.map( person => person.split(', ')[0] )
+
+    lastNames.sort()
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these

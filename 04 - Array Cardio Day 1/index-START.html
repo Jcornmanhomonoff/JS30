@@ -95,13 +95,21 @@
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
 
+    // howMany = arr => {
+    //     const numMobiles = arr.reduce( (allMobiles, currVal) => {
+    //         if (currVal in allMobiles) {
+    //             allMobiles[currVal]++
+    //         } else {
+    //             allMobiles[currVal] = 1
+    //         }
+    //         return allMobiles
+    //     }, {})
+    //     return numMobiles
+    // }
+    //
     howMany = arr => {
         const numMobiles = arr.reduce( (allMobiles, currVal) => {
-            if (currVal in allMobiles) {
-                allMobiles[currVal]++
-            } else {
-                allMobiles[currVal] = 1
-            }
+            currVal in allMobiles ? allMobiles[currVal]++ : allMobiles[currVal] = 1
             return allMobiles
         }, {})
         return numMobiles

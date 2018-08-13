@@ -88,9 +88,13 @@
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
-    let lastNames = people.map( person => person.split(', ')[0] )
-
-    lastNames.sort()
+    const sortedPeople = people.sort((a, b)=> {
+      return a.split(', ')[0] > b.split(', ')[0] ? 1 : -1
+    })
+    // add extra step to list by first name last name
+    sortedPeople.map((person) => {
+      return person.split(', ')[1] + ' ' + person.split(', ')[0]
+    })
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these

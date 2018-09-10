@@ -48,21 +48,20 @@ findMatches = (searchVal, cities) => {
 
 function displayMatches() {
     const foundMatches = findMatches(this.value, cities);
-
+    const html = foundMatches.map(place => {
+        const regex = new RegExp(this.value, 'gi');
+        const cityName = place.city.replace(regex, `<span class="hl">${this.value}</span>`);
+        const stateName = place.state.replace(regex, `<span class="hl">${this.value}</span>`);
+        return `<li>${cityName},${stateName}</li>`
+    }).join('');
+    suggestions.innerHTML = html;
 }
 
 const searchVal = document.querySelector('.search');
+const suggestions = document.querySelector('.suggestions');
 
 searchVal.addEventListener('change', displayMatches);
 searchVal.addEventListener('keyup', displayMatches);
-
-// document.onkeyup = () => {
-//     list.innerHTML = "";
-//     const searchVal = document.querySelector('.search').value;
-//
-//     displayMatches(searchVal, cities);
-//     // makeCityItem(matches)
-// };
 
 </script>
   </body>
